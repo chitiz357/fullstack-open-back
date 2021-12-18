@@ -1,0 +1,16 @@
+### get all notes
+GET http://localhost:3001/notes HTTP/1.1
+
+
+### get one notes
+GET http://localhost:3001/notes/10 HTTP/1.1
+
+### POST new note 
+POST http://localhost:3001/notes HTTP/1.1
+Content-Type: application/json
+
+{
+	"tittle":"primera nota en el sevidor",
+	"content":"note en el servidor"
+
+}
