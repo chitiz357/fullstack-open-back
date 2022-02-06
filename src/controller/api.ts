@@ -8,8 +8,8 @@ import { getAllPerson } from "../person/connection/getAllPerson";
 const entriPoints = (app: Application) => {
 	app.get("/api/person", getAllPerson);
 
-	app.post("/notes", postNewNote);
-	app.get("/notes", getAllNotes);
-	app.get("/notes/:id", getOneNote);
+	app.post("/api/notes", postNewNote);
+	app.get("/api/notes", getAllNotes);
+	app.get("/api/notes/:id", getOneNote);
 };
 export default entriPoints;
