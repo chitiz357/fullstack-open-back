@@ -1,4 +1,4 @@
-import {Person} from './model/person';
+import {Person} from './model';
 
 export let personList: Person[] = [
 	{ name: "bryan", number: "323", id: 1 },
