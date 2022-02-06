@@ -5,6 +5,8 @@ import postNewNote from "../notes/connection/PostNewNote";
 // import GetOneNote from "../notes/connection/getOneNote";
 
 const entriPoints = (app: Application) => {
+
+	
 	app.post("/notes",postNewNote)
 	app.get("/notes", getAllNotes);
 	app.get("/notes/:id", getOneNote);
