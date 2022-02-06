@@ -1,3 +1,5 @@
+import {Person} from './model/person';
+
 export let personList: Person[] = [
 	{ name: "bryan", number: "323", id: 1 },
 	{ name: "charlie", number: "2346", id: 2 },
