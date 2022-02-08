@@ -1,10 +1,16 @@
 import { Application } from "express";
+import { apiInfo } from "../info/connection";
 import {getAllNotes, postNote , getOneNote} from '../notes/connection';
-import {getAllPerson ,getOnePerson} from '../person/connection';
+import * as person from '../person/connection';
 
 const entriPoints = (app: Application) => {
-	app.get("/api/person", getAllPerson);
-	app.get("/api/person/:id",getOnePerson);
+
+	app.get("/info",apiInfo)
+
+	app.get("/api/person", person.getAll);
+	app.get("/api/person/:id", person.getOne);
+	app.post("/api/person", person.post);
+	app.delete("/api/person/:id", person.del)
 
 	app.post("/api/notes", postNote);
 	app.get("/api/notes", getAllNotes);

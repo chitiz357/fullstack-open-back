@@ -12,5 +12,4 @@ Content-Type: application/json
 {
 	"tittle":"primera nota en el sevidor",
 	"content":"nota en el servidor"
-
 }

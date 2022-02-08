@@ -1,25 +1,48 @@
 import { Request, Response } from "express";
-import { addPerson, allPerson, onePerson } from "./function";
-import { Person } from "./model";
+import * as fn from "./function";
 
-export function getAllPerson(_req: Request, res: Response) {
-	const personList = allPerson();
+export function getAll(_req: Request, res: Response) {
+	const personList = fn.allPerson();
 	res.send(personList);
 }
 
-export function getOnePerson(req: Request, res: Response) {
+export function getOne(req: Request, res: Response) {
 	const id = Number(req.params.id);
-	const note = onePerson(id);
+	const note = fn.onePerson(id);
+	if (!note) {
+		res.status(404).send({ error: `no encontrado` }).end();
+		return;
+	}
+
 	res.send(note);
 }
 
-export function postPerson(req: Request, _res: Response) {
-	const name: string = req.body.name;
-	const number: string = req.body.number;
+export function post(req: Request, res: Response) {
+	const body = req.body;
 
-	const person = new Person({ name, number });
+	if (!body.name) {
+		res.status(400).send("name is missing");
+		return;
+	}
+	if (!body.number) {
+		res.status(400).send("number is missing");
+		return;
+	}
 
-	addPerson(person);
+	const personProps = {
+		name: body.name,
+		number: body.number,
+	};
 
-	_res.send(person);
+	const person = fn.create(personProps);
+
+	fn.addPerson(person);
+
+	res.send(person);
+}
+
+export function del(req: Request, res: Response) {
+	const id: number = Number(req.params.id);
+	fn.removePerson(id);
+	res.status(204).end();
 }
