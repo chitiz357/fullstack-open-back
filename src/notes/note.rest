@@ -13,3 +13,7 @@ Content-Type: application/json
 	"tittle":"primera nota en el sevidor",
 	"content":"nota en el servidor"
 }
+
+###
+DELETE http://localhost:3001/api/notes/1 HTTP/1.1
+Content-Type: application/json

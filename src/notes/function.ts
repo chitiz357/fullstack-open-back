@@ -1,5 +1,28 @@
-import { notesList } from "./notes-list";
-import { Note } from "./model";
+import { Note } from './model';
+
+let notesList: Note[] = [
+	{
+		id: 1,
+		tittle: 'primera nota',
+		content: 'typescript es genial',
+		important: true,
+		date: new Date(),
+	},
+	{
+		id: 2,
+		tittle: 'segunda nota',
+		content: 'me quiero pasa a apple pero no tengo dinero',
+		important: false,
+		date: new Date(),
+	},
+	{
+		id: 3,
+		tittle: 'tercera note',
+		content: 'Mi cama es muy comoda🤤',
+		important: true,
+		date: new Date(),
+	},
+];
 
 export const allNotes = () => notesList;
 
@@ -21,4 +44,8 @@ export const newNote = (title: string, content: string, important = false) => {
 		date: new Date(),
 	};
 	return note;
+};
+
+export const removeNote = (id: number) => {
+	notesList = notesList.filter((note) => !(note.id === id));
 };

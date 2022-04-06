@@ -1,6 +1,6 @@
 import { Application } from "express";
 import { apiInfo } from "../info/connection";
-import {getAllNotes, postNote , getOneNote} from '../notes/connection';
+import {getAllNotes, postNote , getOneNote, deleteNote} from '../notes/connection';
 import * as person from '../person/connection';
 
 const entriPoints = (app: Application) => {
@@ -15,5 +15,6 @@ const entriPoints = (app: Application) => {
 	app.post("/api/notes", postNote);
 	app.get("/api/notes", getAllNotes);
 	app.get("/api/notes/:id", getOneNote);
+	app.delete("/api/notes/:id", deleteNote)
 };
 export default entriPoints;
