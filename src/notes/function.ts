@@ -23,18 +23,21 @@ let notesList: Note[] = [
 		date: new Date(),
 	},
 ];
-
+/** return all notes of the noteList */
 export const allNotes = () => notesList;
 
+/** return ony one notes of the noteList */
 export const oneNote = (id: number) => {
 	const note = notesList.find((note) => note.id === id);
 	return note;
 };
-
+// ---------------------------------------------------------------------------|-80------------------------------------|-120---------------|-140a
+/** add a note to noteList */
 export const addNote = (note: Note) => {
 	notesList.push(note);
 };
 
+/** create new note */
 export const newNote = (title: string, content: string, important = false) => {
 	const note: Note = {
 		tittle: title,
@@ -46,6 +49,7 @@ export const newNote = (title: string, content: string, important = false) => {
 	return note;
 };
 
+/** function to remove a note of de list */
 export const removeNote = (id: number) => {
 	notesList = notesList.filter((note) => !(note.id === id));
 };

@@ -1,12 +1,12 @@
-import { Request, Response } from "express";
-import * as fn from "./function";
+import { Request, Response } from 'express';
+import * as fn from './function';
 
-export function getAll(_req: Request, res: Response) {
+export function getPerson(_req: Request, res: Response) {
 	const personList = fn.allPerson();
 	res.send(personList);
 }
 
-export function getOne(req: Request, res: Response) {
+export function getOnePerson(req: Request, res: Response) {
 	const id = Number(req.params.id);
 	const note = fn.onePerson(id);
 	if (!note) {
@@ -17,15 +17,15 @@ export function getOne(req: Request, res: Response) {
 	res.send(note);
 }
 
-export function post(req: Request, res: Response) {
+export function postPerson(req: Request, res: Response) {
 	const body = req.body;
 
 	if (!body.name) {
-		res.status(400).send("name is missing");
+		res.status(400).send('name is missing');
 		return;
 	}
 	if (!body.number) {
-		res.status(400).send("number is missing");
+		res.status(400).send('number is missing');
 		return;
 	}
 
@@ -41,8 +41,9 @@ export function post(req: Request, res: Response) {
 	res.send(person);
 }
 
-export function del(req: Request, res: Response) {
-	const id: number = Number(req.params.id);
+export function delPerson(req: Request, res: Response) {
+	const id = Number(req.params.id);
 	fn.removePerson(id);
 	res.status(204).end();
 }
+

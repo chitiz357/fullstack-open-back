@@ -1,20 +1,27 @@
-import { Application } from "express";
-import { apiInfo } from "../info/connection";
-import {getAllNotes, postNote , getOneNote, deleteNote} from '../notes/connection';
+import express from 'express';
+import { apiInfo } from '../info/connection';
+import * as note from '../notes/connection';
 import * as person from '../person/connection';
 
-const entriPoints = (app: Application) => {
+export const router = express.Router();
 
-	app.get("/info",apiInfo)
+/**
+ * infos
+ */
+router.get('/info', apiInfo);
 
-	app.get("/api/person", person.getAll);
-	app.get("/api/person/:id", person.getOne);
-	app.post("/api/person", person.post);
-	app.delete("/api/person/:id", person.del)
+/**
+ * person routes
+ */
+router.get('/person', person.getPerson);
+router.get('/person/:id', person.getOnePerson);
+router.post('/person', person.postPerson);
+router.delete('/person/:id', person.delPerson);
 
-	app.post("/api/notes", postNote);
-	app.get("/api/notes", getAllNotes);
-	app.get("/api/notes/:id", getOneNote);
-	app.delete("/api/notes/:id", deleteNote)
-};
-export default entriPoints;
+/**
+ * notes routes
+ */
+router.post('/notes', note.postNote);
+router.get('/notes', note.getAllNotes);
+router.get('/notes/:id', note.getOneNote);
+router.delete('/notes/:id', note.deleteNote);

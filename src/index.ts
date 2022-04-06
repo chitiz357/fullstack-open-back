@@ -1,5 +1,5 @@
 import express from "express";
-import entriPoints from "./controller/api";
+import  { router } from "./controller/api";
 import cors from "cors";
 
 const app = express();
@@ -10,7 +10,7 @@ app.get("/", (_req, res) => {
 	res.send(`dasfas`);
 });
 
-entriPoints(app);
+app.use('/api',router)
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
