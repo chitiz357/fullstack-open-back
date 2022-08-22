@@ -22,11 +22,11 @@ export function postPerson(req: Request, res: Response) {
 
 	if (!body.name) {
 		res.status(400).send('name is missing');
-		return;
+		throw new Error('missing content');
 	}
 	if (!body.number) {
 		res.status(400).send('number is missing');
-		return;
+		throw new Error('missing content');
 	}
 
 	const personProps = {
@@ -46,4 +46,3 @@ export function delPerson(req: Request, res: Response) {
 	fn.removePerson(id);
 	res.status(204).end();
 }
-

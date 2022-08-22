@@ -1,6 +1,6 @@
 import { Note } from "./model";
 
-export let notesList: Note[] = [
+export const notesList: Note[] = [
 	{
 		id: 1,
 		tittle: "primera nota",
